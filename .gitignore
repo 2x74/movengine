@@ -1,0 +1,19 @@
+build/
+# CS:S texture packs: gigabytes of Valve content, never commit them
+*/css_textures.zip
+*.zip.part
+
+# Dear ImGui writes its window layout next to wherever you launched from,
+# and rewrites it on every run. Generated state, not source.
+imgui.ini
+*/imgui.ini
+bhop_editor_imgui.ini
+*/bhop_editor_imgui.ini
+
+# Recorded clips land in video/ beside the executable. They are output, and
+# linux/ is tracked, so without this every clip would be committed.
+video/
+*/video/
+
+# The Windows cross build keeps its own tree; see docs/windows-build.md.
+build-windows/
