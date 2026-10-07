@@ -1,0 +1,10 @@
+add_library(audio STATIC sound.cpp decoders.c)
+target_include_directories(audio PUBLIC ${CMAKE_SOURCE_DIR}/src)
+target_include_directories(audio PRIVATE ${CMAKE_SOURCE_DIR}/third_party/dr_libs ${CMAKE_SOURCE_DIR}/third_party/stb)
+target_link_libraries(audio PUBLIC SDL3::SDL3)
+# Vendored single-file decoders: not our warnings to fix.
+if(MSVC)
+    set_source_files_properties(decoders.c PROPERTIES COMPILE_OPTIONS "/w")
+else()
+    set_source_files_properties(decoders.c PROPERTIES COMPILE_OPTIONS "-w")
+endif()
